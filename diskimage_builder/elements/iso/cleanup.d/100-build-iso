@@ -133,7 +133,7 @@ set timeout="5"
 set hidden_timeout_quiet=false
 
 menuentry "install" {
-    search --set=root --label VMEDIA_BOOT_ISO
+    search --set=root --label VMBOOT_ISO
     linuxefi /vmlinuz  $EXTRA_KERNEL_PARAMS $KERNEL_CMDLINE_ARGS --
     initrdefi /initrd
 }
@@ -143,7 +143,7 @@ END_CONFIG
 
     # Create the ISO
     echo "Generating the ISO"
-    $MKISOFS -r -V "VMEDIA_BOOT_ISO" -cache-inodes -J -l \
+    $MKISOFS -r -V "VMBOOT_ISO" -cache-inodes -J -l \
     -b isolinux/isolinux.bin  -no-emul-boot \
     -boot-load-size 4 -boot-info-table \
     -eltorito-alt-boot -e isolinux/efiboot.img \
